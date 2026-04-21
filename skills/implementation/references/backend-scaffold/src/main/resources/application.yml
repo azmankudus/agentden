@@ -1,0 +1,40 @@
+micronaut:
+  application:
+    name: backend
+  server:
+    port: 8080
+    cors:
+      enabled: true
+      configurations:
+        all:
+          allowedOrigins:
+            - http://localhost:3000
+          allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - PATCH
+          allowedHeaders:
+            - Content-Type
+            - Authorization
+          maxAge: 3600
+  endpoints:
+    health:
+      enabled: true
+      sensitive: false
+  jackson:
+    bean-introspection-module: true
+    serialization-inclusion: non_null
+    date-format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    time-zone: UTC
+
+jackson:
+  serialization:
+    write-dates-as-timestamps: false
+
+logger:
+  levels:
+    root: INFO
+    io.micronaut: INFO
+    com.example: DEBUG
